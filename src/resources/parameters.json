@@ -1,0 +1,14 @@
+{
+  "environment": {
+    "AWS_COGNITO_USER_POOL_ID": "AWS_COGNITO_USER_POOL_ID",
+    "AWS_COGNITO_APP_CLIENT_ID": "AWS_COGNITO_APP_CLIENT_ID",
+    "AWS_COGNITO_ISSUER_URI": "AWS_COGNITO_ISSUER_URI",
+    "AWS_COGNITO_JWK_URI": "AWS_COGNITO_JWK_URI"
+  },
+  "ssm": {
+    "AWS_COGNITO_USER_POOL_ID": "/cognito-api/cognito/main/cognito_app_pool_id",
+    "AWS_COGNITO_APP_CLIENT_ID": "/cognito-api/cognito/main/cognito_user_pool_client_id",
+    "AWS_COGNITO_JWK_URI": "/cognito-api/cognito/main/cognito_jwk_uri",
+    "AWS_COGNITO_ISSUER_URI": "/cognito-api/cognito/main/cognito_issuer_uri"
+  }
+}

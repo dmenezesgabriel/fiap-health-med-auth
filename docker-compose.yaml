@@ -1,0 +1,53 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:80"
+    volumes:
+      - .:/app/:rw
+      - ~/.aws:/root/.aws
+    networks:
+      - app-network
+    environment:
+      # Development
+      # ===================================================== #
+      # - AWS_REGION_NAME=us-east-1
+      # - ENVIRONMENT=development
+      # Local
+      # ===================================================== #
+      - ENVIRONMENT=local
+      - AWS_ENDPOINT_URL=http://motoserver:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    command: uvicorn main:app --host 0.0.0.0 --port 80 --reload
+    depends_on:
+      - motoserver
+
+  motoserver:
+    image: motoserver/moto:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - MOTO_PORT=4566
+    networks:
+      - app-network
+
+  terraform:
+    image: hashicorp/terraform:latest
+    volumes:
+      - ./infra/aws/setup:/infra:rw
+      - ~/.aws:/root/.aws
+    working_dir: /infra
+    environment:
+      - AWS_ACCESS_KEY_ID="test"
+      - AWS_SECRET_ACCESS_KEY="test"
+    networks:
+      - app-network
+    depends_on:
+      - motoserver
+
+networks:
+  app-network:
+    driver: bridge

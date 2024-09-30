@@ -1,0 +1,4 @@
+infra/*
+.gitignore
+Makefile
+sonar-project.properties

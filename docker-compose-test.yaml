@@ -1,0 +1,16 @@
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - .:/app/
+
+  allure:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.allure
+    volumes:
+      - .:/app/
+    ports:
+      - "35741:35741"

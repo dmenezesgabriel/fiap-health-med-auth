@@ -1,0 +1,19 @@
+[run]
+source = .
+omit =
+    venv/*
+    tests/*
+    __init__.py
+    migrations/*
+    infra/*
+
+[report]
+include_namespace_packages = true
+omit =
+    venv/*
+    tests/*
+    __init__.py
+    migrations/*
+    infra/*
+
+skip_empty = true

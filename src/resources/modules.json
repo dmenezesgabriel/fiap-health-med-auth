@@ -1,0 +1,10 @@
+{
+  "ssm": {
+    "path": "src.adapters.parameters.ssm_adapter",
+    "class_name": "SSMParameterStoreAdapter"
+  },
+  "environment": {
+    "path": "src.adapters.parameters.environment_adapter",
+    "class_name": "EnvironmentParameterStoreAdapter"
+  }
+}
